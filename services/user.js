@@ -127,9 +127,7 @@ router.delete('/:user_id', AUTH_ADMIN, async (req, res) => {
   try {
     const result = await Model.User._deleteById(req.params.user_id)
     if (!result) {
-      return res
-        .status(404)
-        .send({ message: ERROR.USER_NOT_FOUND })
+      return res.status(404).send({ message: ERROR.USER_NOT_FOUND })
     }
 
     return res.status(200).send(result)

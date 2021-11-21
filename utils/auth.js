@@ -7,17 +7,16 @@ exports.AUTH_ADMIN = async (req, res, next) => {
     headers: { authorization },
   } = req
   const token = await Token.getByIdAndType(authorization, TOKEN_TYPE.AUTH)
-  const user = await Auth._getById(token.user_id)
-  if (!token) {
+  const user = await Auth._getById(token?.user_id)
+  if (user?.auth_status === AUTH_STATUS.SUSPENDED) {
+    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
+  }
+  if (!token || user?.auth_status !== AUTH_STATUS.AUTHED) {
     return res.status(401).send({ message: ERROR.NO_AUTH })
   }
 
   if (user?.user_type !== USER_TYPE.ADMIN) {
     return res.status(405).send({ message: ERROR.PERMISSION })
-  }
-
-  if (user?.auth_status !== AUTH_STATUS.AUTHED) {
-    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
   }
   req.body.current_user = user
   next()
@@ -28,17 +27,16 @@ exports.AUTH_USER = async (req, res, next) => {
     headers: { authorization },
   } = req
   const token = await Token.getByIdAndType(authorization, TOKEN_TYPE.AUTH)
+  const user = await Auth._getById(token?.user_id)
+  if (user?.auth_status === AUTH_STATUS.SUSPENDED) {
+    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
+  }
   if (!token || user?.auth_status !== AUTH_STATUS.AUTHED) {
     return res.status(401).send({ message: ERROR.NO_AUTH })
   }
 
-  const user = await Auth._getById(token.user_id)
   if (user?.user_type !== USER_TYPE.USER) {
     return res.status(405).send({ message: ERROR.PERMISSION })
-  }
-
-  if (user?.auth_status !== AUTH_STATUS.AUTHED) {
-    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
   }
   req.body.current_user = user
   next()
@@ -49,12 +47,12 @@ exports.AUTHED = async (req, res, next) => {
     headers: { authorization },
   } = req
   const token = await Token.getByIdAndType(authorization, TOKEN_TYPE.AUTH)
-  const user = await Auth._getById(token.user_id)
+  const user = await Auth._getById(token?.user_id)
+  if (user?.auth_status === AUTH_STATUS.SUSPENDED) {
+    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
+  }
   if (!token || user?.auth_status !== AUTH_STATUS.AUTHED) {
     return res.status(401).send({ message: ERROR.NO_AUTH })
-  }
-  if (user?.auth_status !== AUTH_STATUS.AUTHED) {
-    return res.status(401).send({ message: ERROR.USER_SUSPEND_MESSAGE })
   }
   req.body.current_user = user
   next()

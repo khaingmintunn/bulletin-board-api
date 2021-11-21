@@ -50,7 +50,7 @@ class CustomValidator {
    * @param {String} arr - array
    * @returns error message
    */
-   static isInclude(field, str, arr) {
+  static isInclude(field, str, arr) {
     if (!str) return null
     let message = null
     if (!arr.includes(str)) {

@@ -143,9 +143,9 @@ class AuthModel {
 
     const user = await this._getByEmail(params.email)
     if (!user) return { error: { status: 404, message: ERROR.USER_NOT_FOUND } }
-    else if (user && user.auth_status === AUTH_STATUS.NOAUTH)
+    else if (user && user.auth_status === AUTH_STATUS.NO_AUTH)
       return { error: { status: 401, message: ERROR.NEED_AUTH } }
-    else if (user && user.auth_status === AUTH_STATUS.SUSPEND)
+    else if (user && user.auth_status === AUTH_STATUS.SUSPENDED)
       return { error: { status: 401, message: ERROR.USER_SUSPEND_MESSAGE } }
 
     const is_match = await Util.comparePassword(params.password, user.password)

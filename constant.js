@@ -32,7 +32,7 @@ module.exports.ERROR = {
   INCORRECT_CURRENT_PASSWORD: 'Current password is incorrect.',
   NO_AUTH: 'User not login, please login first.',
   PERMISSION: 'You have no permission to use this service.',
-  NOT_SUSPEND: "Can't suspend no authenticated user."
+  NOT_SUSPEND: "Can't suspend no authenticated user.",
 }
 
 module.exports.USER_TYPE = {

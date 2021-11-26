@@ -27,6 +27,7 @@ module.exports.ERROR = {
   EXPIRED_MESSAGE: 'Expired token.',
   TOKEN_NOT_FOUND: 'Token Not Found.',
   USER_NOT_FOUND: 'User Not Found.',
+  POST_NOT_FOUND: 'Post Not Found.',
   NEED_AUTH: 'User is need to authenticate.',
   INCORRECT_PASSWORD: 'Incorrect password, please try again.',
   INCORRECT_CURRENT_PASSWORD: 'Current password is incorrect.',

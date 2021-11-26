@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "2bcd7454-43cc-430b-b73a-cd92decde120",
+		"_postman_id": "488a53e6-38f8-4958-91b5-cb85614d50e4",
 		"name": "bulletin-board",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -472,6 +472,155 @@
 					"path": [
 						"user",
 						"da667cd9-dea5-4f29-8ce1-fc8a45f48e22"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Fny4HTSFQ89fGKSuWNPc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"title 1\",\r\n    \"text\": \"this is description 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/post/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Fny4HTSFQ89fGKSuWNPc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/post/post/e481f6c5-7fd7-4271-9fab-2ebce948ba44",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"post",
+						"e481f6c5-7fd7-4271-9fab-2ebce948ba44"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Fny4HTSFQ89fGKSuWNPc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/post/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Fny4HTSFQ89fGKSuWNPc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"updated title 1\",\r\n    \"text\": \"updated description 1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:4000/post/d511daf4-95c2-4536-9d96-dc36f9479b16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"d511daf4-95c2-4536-9d96-dc36f9479b16"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Fny4HTSFQ89fGKSuWNPc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:4000/post/d511daf4-95c2-4536-9d96-dc36f9479b16",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "4000",
+					"path": [
+						"post",
+						"d511daf4-95c2-4536-9d96-dc36f9479b16"
 					]
 				}
 			},

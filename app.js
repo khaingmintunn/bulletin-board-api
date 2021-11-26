@@ -22,5 +22,5 @@ dbconnection.once('open', () => {
 app.use('/', services)
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on ${process.env.PORT}...`)
+  console.log(`Server is up.`)
 })

@@ -92,7 +92,7 @@ class PostModel {
     })
 
     return {
-      post: this.toModel(deleted_post),
+      post: deleted_post ? this.toModel(post): null,
     }
   }
 

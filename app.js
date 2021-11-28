@@ -19,6 +19,16 @@ dbconnection.on(
 dbconnection.once('open', () => {
   console.log('Database connected.')
 })
+app.use((req, res, next) => {
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE'
+  )
+  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
+  res.setHeader('Access-Control-Allow-Credentials', true)
+  next()
+})
+app.set('etag', false)
 app.use('/', services)
 
 app.listen(process.env.PORT, () => {
